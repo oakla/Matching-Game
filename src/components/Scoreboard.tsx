@@ -3,11 +3,21 @@ import { getWinners } from '../gameLogic';
 import './Scoreboard.css';
 
 interface ScoreboardProps {
+  /** Current game state (scores, turn info, config flags, etc.). */
   state: GameState;
+  /** Called when the player clicks "New Game". */
   onReset: () => void;
+  /** Called when the player clicks the hint button. */
   onHint: () => void;
 }
 
+/**
+ * Scoreboard component.
+ *
+ * Displays the current player's turn, the countdown timer (when timed mode is
+ * active), per-player scores, a hint button (when hints are allowed), and a
+ * "New Game" reset button. Shows a game-over banner once all pairs are matched.
+ */
 export function Scoreboard({ state, onReset, onHint }: ScoreboardProps) {
   const { scores, currentPlayerIndex, gameOver, config, secondsRemaining, turnPhase, hintsUsed } = state;
   const winners = gameOver ? getWinners(scores) : [];
