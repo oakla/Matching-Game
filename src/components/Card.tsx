@@ -2,12 +2,22 @@ import type { Card } from '../types/game';
 import './Card.css';
 
 interface CardProps {
+  /** The card data to render. */
   card: Card;
+  /** Called with the card id when the card is clicked or activated via keyboard. */
   onClick: (id: string) => void;
+  /** When `true`, a visual hint highlight is applied to this card. */
   isHinted: boolean;
+  /** When `true`, the card ignores click and keyboard interactions. */
   disabled: boolean;
 }
 
+/**
+ * Individual card tile component.
+ *
+ * Displays a flip animation between the card back (face-down) and front
+ * (face-up/matched). Supports keyboard activation via Enter.
+ */
 export function CardTile({ card, onClick, isHinted, disabled }: CardProps) {
   const isFaceUp = card.state === 'face-up' || card.state === 'matched';
   const isMatched = card.state === 'matched';

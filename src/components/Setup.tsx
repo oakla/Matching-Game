@@ -11,9 +11,17 @@ const DEFAULT_PAIRS: WordDefinitionPair[] = [
 ];
 
 interface SetupProps {
+  /** Called when the player submits a valid configuration and wants to start. */
   onStart: (config: GameConfig) => void;
 }
 
+/**
+ * Setup screen component.
+ *
+ * Renders the word/definition pair editor, game options (number of players,
+ * timed turns, hints), and a Start button. Calls `onStart` with the assembled
+ * {@link GameConfig} when the player is ready.
+ */
 export function Setup({ onStart }: SetupProps) {
   const [pairs, setPairs] = useState<WordDefinitionPair[]>(DEFAULT_PAIRS);
   const [numPlayers, setNumPlayers] = useState(2);

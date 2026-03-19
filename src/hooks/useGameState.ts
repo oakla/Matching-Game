@@ -8,8 +8,20 @@ import {
   validateMatch,
 } from '../gameLogic';
 
+/** How long (ms) to display the "no match" state before flipping cards back */
 const NO_MATCH_DISPLAY_MS = 1200;
 
+/**
+ * Custom hook that manages the full runtime state of a single game session.
+ *
+ * @param config - The game configuration (pairs, player count, timed mode, hints).
+ * @returns An object containing:
+ *   - `state`       – the current {@link GameState}
+ *   - `flipCard`    – callback to flip a card by id
+ *   - `requestHint` – callback to request a hint for the currently face-up word card
+ *   - `hintCardId`  – id of the card currently highlighted as a hint (or `null`)
+ *   - `resetGame`   – callback to start a fresh game with the same config
+ */
 export function useGameState(config: GameConfig) {
   const [state, setState] = useState<GameState>(() => createGameState(config));
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
