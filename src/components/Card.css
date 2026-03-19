@@ -1,0 +1,103 @@
+.card-tile {
+  width: 140px;
+  height: 100px;
+  perspective: 600px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.card-tile.no-click {
+  cursor: default;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+  border-radius: 10px;
+}
+
+.card-tile.face-up .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-back,
+.card-front {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+/* Back face */
+.card-back {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+}
+
+.card-type-label {
+  font-size: 2rem;
+  font-weight: 700;
+  opacity: 0.6;
+}
+
+/* Front face */
+.card-front {
+  background: #fff;
+  transform: rotateY(180deg);
+  border: 2px solid #e5e7eb;
+}
+
+.card-tile.word-card .card-front {
+  border-color: #4f46e5;
+  background: #eef2ff;
+}
+
+.card-tile.definition-card .card-front {
+  border-color: #059669;
+  background: #ecfdf5;
+}
+
+.card-type-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  background: rgba(0, 0, 0, 0.07);
+}
+
+.card-content {
+  font-size: 0.78rem;
+  text-align: center;
+  line-height: 1.3;
+  margin: 0;
+  word-break: break-word;
+}
+
+/* Matched */
+.card-tile.matched .card-inner {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Hinted */
+.card-tile.hinted .card-back {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  animation: pulse-hint 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-hint {
+  from { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.6); }
+  to   { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+}

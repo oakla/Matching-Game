@@ -1,0 +1,125 @@
+.scoreboard {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 280px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.game-over-banner {
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  color: #7c3aed;
+}
+
+.turn-indicator {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.no-match-label {
+  color: #dc2626;
+}
+
+.evaluating-label {
+  color: #d97706;
+}
+
+.timer {
+  background: #f3f4f6;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-warning {
+  background: #fef2f2;
+  color: #dc2626;
+  animation: blink 0.6s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.4; }
+}
+
+.scores-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.score-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 10px;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  transition: border-color 0.2s, background 0.2s;
+  min-width: 70px;
+}
+
+.score-chip.active {
+  border-color: #4f46e5;
+  background: #eef2ff;
+}
+
+.player-name {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+}
+
+.player-score {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.action-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.btn-hint {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.btn-reset {
+  background: #f3f4f6;
+  color: #374151;
+}
